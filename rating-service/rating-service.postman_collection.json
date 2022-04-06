@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "3bfcbe5f-134c-4cdb-a331-5b2a465d8963",
+		"name": "rating-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Ratings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/apis/ratings/624d5ca00e097011ad5a672b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"apis",
+						"ratings",
+						"624d5ca00e097011ad5a672b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear Ratings",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/apis/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"apis",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\" : \"624d5ca00e097011ad5a672b\",\r\n    \"movieId\" : \"624d5cb10e097011ad5a672e\",\r\n    \"rating\" : 4.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/apis/ratings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"apis",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
