@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rmg</groupId>
-	<artifactId>movie-service</artifactId>
+	<artifactId>booking-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movie-service</name>
-	<description>Movie Service</description>
+	<name>booking-service</name>
+	<description>Booking Service</description>
 	<properties>
 		<java.version>8</java.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>

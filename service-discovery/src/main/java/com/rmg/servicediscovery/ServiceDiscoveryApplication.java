@@ -1,15 +1,16 @@
-package com.rmg.movieservice;
+package com.rmg.servicediscovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class MovieServiceApplication {
+@EnableEurekaServer
+public class ServiceDiscoveryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieServiceApplication.class, args);
+		SpringApplication.run(ServiceDiscoveryApplication.class, args);
 	}
 
 }
