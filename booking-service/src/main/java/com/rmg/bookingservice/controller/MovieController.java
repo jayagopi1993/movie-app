@@ -1,6 +1,7 @@
 package com.rmg.bookingservice.controller;
 
 import com.rmg.bookingservice.dto.CustomerRating;
+import com.rmg.bookingservice.dto.Movie;
 import com.rmg.bookingservice.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/apis/customer-ratings")
-public class BookingController {
+@RequestMapping("/apis/customer-movies")
+public class MovieController {
 
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping("/{customerId}")
-    public CustomerRating getCustomerRatings(@PathVariable("customerId") String customerId){
-        return bookingService.generateCustomerRatingById(customerId);
+    @GetMapping("/{movieId}")
+    public Movie getCustomerMovies(@PathVariable("movieId") String movieId){
+        return bookingService.generateCustomerMovieById(movieId);
     }
 
 }

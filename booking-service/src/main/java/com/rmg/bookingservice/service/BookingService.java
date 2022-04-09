@@ -27,6 +27,9 @@ public class BookingService {
         return customerRating;
     }
 
-
+    public Movie generateCustomerMovieById(String movieId){
+        Movie movie = interserviceClient.getMoviesById(movieId);
+        return movie;
+    }
 
 }

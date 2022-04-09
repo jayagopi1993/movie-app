@@ -19,6 +19,11 @@ public class MovieController {
         return movieService.getMovies();
     }
 
+    @GetMapping("/{movieId}")
+    public Movie getMoviesById(@PathVariable("movieId") String movieId) throws InterruptedException {
+        return movieService.getMoviesById(movieId);
+    }
+
     @PostMapping
     public Movie addMovie(@RequestBody Movie movie) {
         return movieService.addMovie(movie);
