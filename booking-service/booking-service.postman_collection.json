@@ -25,6 +25,27 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get CustomerMovies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9092/apis/customer-movies/624d5ca00e097011ad5a672b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"apis",
+						"customer-movies",
+						"624d5ca00e097011ad5a672b"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

@@ -26,6 +26,27 @@
 			"response": []
 		},
 		{
+			"name": "Get Movie By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/apis/movies/624d5ca00e097011ad5a672b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"apis",
+						"movies",
+						"624d5ca00e097011ad5a672b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Clear Movies",
 			"request": {
 				"method": "DELETE",
@@ -74,6 +95,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
