@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: booking-service
+  data:
+    mongodb:
+      uri: mongodb://localhost/movieDb
+server:
+  port: 9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance:
+      preferIpAddress: true
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+
+
+services:
+  movie-service:
+    url: http://MOVIE-SERVICE/apis/movies
+  rating-service:
+    url: http://RATING-SERVICE/apis/ratings/
+
+
+sample:
+  response:
+    env: GIT REPO SERVICE
+    movies:
+      - movie1
+      - movie2
+      - movie3
+    ratings:
+      - rating1
+      - rating2
+      - rating3
+
+sample-movie:
+  name: Movie1
+  actor: Actor1
+  year: 2020
+  rating: 3
