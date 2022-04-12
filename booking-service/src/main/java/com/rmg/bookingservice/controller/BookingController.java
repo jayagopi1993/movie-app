@@ -1,6 +1,7 @@
 package com.rmg.bookingservice.controller;
 
 import com.rmg.bookingservice.dto.CustomerRating;
+import com.rmg.bookingservice.dto.SampleCustomerRating;
 import com.rmg.bookingservice.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,11 @@ public class BookingController {
     @GetMapping("/{customerId}")
     public CustomerRating getCustomerRatings(@PathVariable("customerId") String customerId){
         return bookingService.generateCustomerRatingById(customerId);
+    }
+
+    @GetMapping("/sample")
+    public SampleCustomerRating getSampleCustomerRatings(){
+        return bookingService.generateSampleCustomerRating();
     }
 
 }

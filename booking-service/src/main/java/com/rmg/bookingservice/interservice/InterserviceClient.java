@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.rmg.bookingservice.dto.Movie;
 import com.rmg.bookingservice.dto.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,12 +15,18 @@ import java.util.List;
 @Service
 public class InterserviceClient {
 
+    @Value("${services.rating-service.url}")
+    private String ratingServiceUrl;
+
+    @Value("${services.movie-service.url}")
+    private String movieServiceUrl;
+
     @Autowired
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod="getFallbackRatings")
     public List<Rating> getRatings(String customerId){
-        return restTemplate.getForObject("http://RATING-SERVICE/apis/ratings/"+customerId, List.class);
+        return restTemplate.getForObject(this.ratingServiceUrl+customerId, List.class);
     }
 
     public List<Rating> getFallbackRatings(String customerId){
@@ -28,7 +35,7 @@ public class InterserviceClient {
 
     @HystrixCommand(fallbackMethod="getFallbackMovies")
     public List<Movie> getMovies(){
-        return restTemplate.getForObject("http://MOVIE-SERVICE/apis/movies", List.class);
+        return restTemplate.getForObject(this.movieServiceUrl, List.class);
     }
 
     public List<Movie> getFallbackMovies(){
@@ -42,7 +49,7 @@ public class InterserviceClient {
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
     })
     public Movie getMoviesById(String movieId){
-        return restTemplate.getForObject("http://MOVIE-SERVICE/apis/movies"+movieId, Movie.class);
+        return restTemplate.getForObject(this.movieServiceUrl+"/"+movieId, Movie.class);
     }
 
     public Movie getFallbackMoviesById(String movieId){

@@ -1,10 +1,9 @@
 package com.rmg.bookingservice.service;
 
-import com.rmg.bookingservice.dto.CustomerRating;
-import com.rmg.bookingservice.dto.Movie;
-import com.rmg.bookingservice.dto.Rating;
+import com.rmg.bookingservice.dto.*;
 import com.rmg.bookingservice.interservice.InterserviceClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,6 +12,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
+
+    @Value("${sample.response.env}")
+    private  String currentEnv;
+
+    @Value("${sample.response.response-type.optional: OPTIONAL RESPONSE}")
+    private  String optionalResponseType;
+
+    @Value("${sample.response.movies}")
+    private List<String> movies;
+
+    @Value("${sample.response.ratings}")
+    private List<String> ratings;
+
+    @Autowired
+    private SampleMovie sampleMovie;
 
     @Autowired
     private InterserviceClient interserviceClient;
@@ -32,4 +46,14 @@ public class BookingService {
         return movie;
     }
 
+    public SampleCustomerRating generateSampleCustomerRating(){
+
+        SampleCustomerRating sampleCustomerRating = new SampleCustomerRating();
+        sampleCustomerRating.setOptionalResponseType(this.optionalResponseType);
+        sampleCustomerRating.setMovies(this.movies);
+        sampleCustomerRating.setRatings(this.ratings);
+        sampleCustomerRating.setCurrentEnv(this.currentEnv);
+        sampleCustomerRating.setSampleMovie(this.sampleMovie.toString());
+        return sampleCustomerRating;
+    }
 }
