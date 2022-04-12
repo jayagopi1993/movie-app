@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class SampleCustomerRating {
 
+    private String activeProfile;
+
     private  String currentEnv;
 
     private  String optionalResponseType;

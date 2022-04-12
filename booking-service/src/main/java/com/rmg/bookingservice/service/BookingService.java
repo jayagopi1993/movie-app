@@ -4,6 +4,7 @@ import com.rmg.bookingservice.dto.*;
 import com.rmg.bookingservice.interservice.InterserviceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +13,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
+
+    @Autowired
+    Environment environment;
 
     @Value("${sample.response.env}")
     private  String currentEnv;
@@ -54,6 +58,9 @@ public class BookingService {
         sampleCustomerRating.setRatings(this.ratings);
         sampleCustomerRating.setCurrentEnv(this.currentEnv);
         sampleCustomerRating.setSampleMovie(this.sampleMovie.toString());
+
+        sampleCustomerRating.setActiveProfile(environment.toString());
+
         return sampleCustomerRating;
     }
 }
