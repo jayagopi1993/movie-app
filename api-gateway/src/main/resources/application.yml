@@ -1,6 +1,14 @@
 server:
   port: 8000
 spring:
+  application:
+    name: api-gateway
+  boot:
+    admin:
+      client:
+        instance:
+          prefer-ip: true
+        url: http://localhost:9099
   cloud:
     gateway:
       routes:
@@ -16,3 +24,17 @@ spring:
           uri: http://localhost:9092/
           predicates:
           - Path=/apis/customer-ratings/**,/apis/customer-movies/**
+
+management:
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  file:
+    max-size: 10MB
+    max-history: 5
+    name: api-gateway-service-log.log
